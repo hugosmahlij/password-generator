@@ -1,138 +1,12 @@
-/* Global styles */
+/* General reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Courier New', Courier, monospace; /* Tipografía con estilo de consola */
 }
 
-body {
-  background-color: #000;
-  color: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  min-height: 100vh;
-  position: relative; /* Esto es para que el fondo se mantenga fijo */
-}
-
-h2 {
-  margin: 10px 0 20px;
-  text-align: center;
-}
-
-input[type="checkbox"], input[type="number"] {
-  margin-right: 0;
-}
-
-input[type="number"] {
-  width: 50px;
-  text-align: center;
-}
-
-/* Container styles */
-.container {
-  background-color: #fff;
-  box-shadow: 0px 2px 10px #ead7d7;
-  padding: 20px;
-  width: 350px;
-  max-width: 100%;
-}
-
-.result-container {
-  background-color: #000;
-  color: #fff;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  font-size: 18px;
-  letter-spacing: 1px;
-  padding: 12px 10px;
-  height: 50px;
-  width: 100%;
-}
-
-.result-container #result {
-  word-wrap: break-word;
-  max-width: calc(100% - 40px);
-}
-
-.result-container .btn {
-  font-size: 20px;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 40px;
-  width: 40px;
-}
-
-.btn {
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 8px 12px;
-  background-color: #000;
-}
-
-.btn-large {
-  display: block;
-  width: 100%;
-}
-
-.setting {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 15px 0;
-}
-
-@media screen and (max-width: 400px) {
-  .result-container {
-    font-size: 14px;
-  }
-}
-
-/* Shape dividers */
-.custom-shape-divider-top-1677876411,
-.custom-shape-divider-bottom-1677876673 {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-top-1677876411 {
-  top: 0;
-  transform: rotate(180deg);
-}
-
-.custom-shape-divider-top-1677876411 svg {
-  display: block;
-  width: calc(142% + 1.3px);
-  height: 154px;
-}
-
-.custom-shape-divider-top-1677876411 .shape-fill,
-.custom-shape-divider-bottom-1677876673 .shape-fill {
-  fill: #ffffff;
-}
-
-.custom-shape-divider-bottom-1677876673 {
-  bottom: 0;
-}
-
-.custom-shape-divider-bottom-1677876673 svg {
-  display: block;
-  width: calc(135% + 1.3px);
-  height: 101px;
-}
-
-/* Matrix background effect */
+/* Fondo estático */
 .background {
   position: fixed;
   top: 0;
@@ -143,24 +17,160 @@ input[type="number"] {
   z-index: -1;
 }
 
-.matrix {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    transparent,
-    transparent 10px,
-    rgba(0, 255, 0, 0.7) 10px,
-    rgba(0, 255, 0, 0.7) 20px
-  );
-  animation: matrix 0.5s infinite linear;
+/* Contenedor general */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
 }
 
-@keyframes matrix {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+/* Caja principal del generador de contraseñas */
+.content {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #00ff00;
+  padding: 20px;
+  width: 350px;
+  text-align: center;
+  color: #00ff00; /* Color verde estilo "Matrix" */
+  box-shadow: 0px 0px 15px rgba(0, 255, 0, 0.5);
+}
+
+/* Estilos del título */
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Botones */
+.btn {
+  background-color: #00ff00;
+  border: none;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px;
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #00cc00;
+}
+
+/* Contenedor de resultados */
+.result-container {
+  background-color: black;
+  color: #00ff00;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #00ff00;
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del botón de copiar al lado de la contraseña */
+.result-container .btn {
+  background-color: #00ff00;
+  border-radius: 2px;
+  color: black;
+  padding: 8px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-container .btn:hover {
+  background-color: #00cc00;
+}
+
+/* Input settings */
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #00ff00;
+}
+
+.settings input[type="number"],
+.settings input[type="checkbox"] {
+  margin-left: 10px;
+  width: 50px;
+  text-align: center;
+}
+
+/* Header y footer shapes */
+.custom-shape-divider-top, .custom-shape-divider-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top {
+  top: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom {
+  bottom: 0;
+}
+
+.custom-shape-divider-top svg,
+.custom-shape-divider-bottom svg {
+  display: block;
+  width: 100%;
+}
+
+.custom-shape-divider-top .shape-fill,
+.custom-shape-divider-bottom .shape-fill {
+  fill: rgba(0, 255, 0, 0.8);
+}
+
+/* Footer */
+footer {
+  color: #00ff00;
+  font-size: 14px;
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+.copy-icon {
+  width: 24px; /* Ajusta el tamaño según sea necesario */
+  height: 24px;
+  vertical-align: middle; /* Centra la imagen verticalmente dentro del botón */
+}
+
+
+/* Estilos del texto de la contraseña generada */
+#result {
+  color: #00ff00; /* Color verde estilo "Matrix" */
+  font-size: 18px;
+  font-weight: bold;
+  overflow-wrap: break-word; /* Para que la contraseña se ajuste si es muy larga */
+  flex: 1;
+  margin-right: 10px;
+}
+
+.copy-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
 }

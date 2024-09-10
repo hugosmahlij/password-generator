@@ -1,8 +1,9 @@
 import { useState } from "react";
+import copyIcon from "../assets/no-file.png"
 import Swal from "sweetalert2";
 
 const PasswordGenerator = () => {
-    const [lenght, setLenght] = useState(10);
+    const [length, setLength] = useState(10);
     const [hasUpper, setHasUpper] = useState(true);
     const [hasLower, setHasLower] = useState(true);
     const [hasNumber, setHasNumber] = useState(true);
@@ -30,16 +31,19 @@ const PasswordGenerator = () => {
 
 
         if (typesArr.lenght === 0) return "";
-
+        
         let generatedPassword = "";
-        for (let i = 0; i < length; i += typesArr.length) {
+        const parsedLength = parseInt(length, 10);
+        
+        for (let i = 0; i < parsedLength; i += typesArr.length) {
             typesArr.forEach((type) => {
                 const funcName = Object.keys(type)[0];
                 generatedPassword += randomFunc[funcName]();
             });
         }
-
+        
         setPassword(generatedPassword.slice(0, length));
+        console.log(generatedPassword);
     }
 
     const copyToClipboard = () => {
@@ -55,15 +59,15 @@ const PasswordGenerator = () => {
         <div className="password-generator">
             <div className="result-container">
                 <span id="result">{password}</span>
-                <button className="btn" onClick={copyToClipboard}></button>
+                <button className="btn" onClick={copyToClipboard}><img src={copyIcon} alt="Copy to clipboard" className="copy-icon"/></button>
             </div>
             <div className="settings">
                 <label>
-                    Password lenght
+                    Password length
                     <input
                         type="number"
-                        value={lenght}
-                        onChange={(e) => setLenght(e.target.value)}
+                        value={length}
+                        onChange={(e) => setLength(e.target.value)}
                         min="4"
                         max="20" />
                 </label>
