@@ -31,35 +31,41 @@ const PasswordGenerator = () => {
 
 
         if (typesArr.lenght === 0) return "";
-        
+
         let generatedPassword = "";
         const parsedLength = parseInt(length, 10);
-        
+
         for (let i = 0; i < parsedLength; i += typesArr.length) {
             typesArr.forEach((type) => {
                 const funcName = Object.keys(type)[0];
                 generatedPassword += randomFunc[funcName]();
             });
         }
-        
+
         setPassword(generatedPassword.slice(0, length));
         console.log(generatedPassword);
     }
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(password);
+
+        const isMobile = window.innerWidth <= 768;
+
         Swal.fire({
             icon: "info",
             title: "Copied to clipboard",
-            time: 2000,
+            toast: true,
+            position: isMobile ? "center" : "top-end",
             showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true
         })
     }
     return (
         <div className="password-generator">
             <div className="result-container">
                 <span id="result">{password}</span>
-                <button className="btn" onClick={copyToClipboard}><img src={copyIcon} alt="Copy to clipboard" className="copy-icon"/></button>
+                <button className="btn" onClick={copyToClipboard}><img src={copyIcon} alt="Copy to clipboard" className="copy-icon" /></button>
             </div>
             <div className="settings">
                 <label>
