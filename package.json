@@ -1,7 +1,7 @@
 {
   "name": "password-generator",
   "private": true,
-  "homepage": "https://hugosmahlij.github.io/password-generator",
+  "homepage": "https://hugosmahlij.github.io/password-generator/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
